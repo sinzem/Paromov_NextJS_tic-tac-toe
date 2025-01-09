@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id         String    @id @default(cuid())
+  status     GameStatus
+  players    User[]    @relation("games") /* (получится связь "many-to-many", в призме промежуточная таблица создается автоматически, в д.с уточняем через relation, так как в User есть еще один похожий массив) */
+  winner     User?     @relation(fields: [winnerId], references: [id]) /* (связь "one-to-many", один игрок может победить во многих играх, уточняем через relation) */
+  field      Json?
+  winnerId   String?
+  gameOverAt String?
+}
+
+enum GameStatus {
+  idle 
+  inProgress
+  gameOver
+  gameOverDraw
+}
+
+model User {
+  id           String    @id @default(cuid())
+  login        String
+  rating       Int
+  passwordHash String
+  games        Game[]    @relation("games") /* (получится связь "many-to-many", в призме промежуточная таблица создается автоматически, уточняем через relation, так как ниже есть схожий массив) */
+  winnerGames  Game[]  /* (массив игр, в которых победил) */
+}
