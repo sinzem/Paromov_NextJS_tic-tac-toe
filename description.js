@@ -1,5 +1,7 @@
 // npx create-next-app@latest . - новое next приложение, при установке выбрал все опции, кроме алиасов
 
+// npm i cuid - для генерации id
+
 // npx shadcn@latest init - библиотека готовых компонентов, опции выбрал New  York, Zinc, use variables, в проект добавилась папка lib и документ globals.css. Для нормальной работы в документе tailwind.config.ts в опции content оставляем только "./src/**/*.{js,ts,jsx,tsx,mdx}" и в component.json меняем настройки алиасов под свою архитектуру.
 // Пример добавления компонента от shadcn:
 // npx shadcn@latest add button - добавили кнопку, при добавлении выбрал опцию "Use --legacy-peer-deps", согласно настройкам, появилась в папке shared/ui, уже готова к использованию, со стилями, пример в корнеевой page.tsx
