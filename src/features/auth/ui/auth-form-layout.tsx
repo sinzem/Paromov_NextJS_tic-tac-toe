@@ -1,45 +1,12 @@
-"use client";
+import React from "react"
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { Label } from "../../../shared/ui/label";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle
-} from "../../../shared/ui/card";
-import { Alert, AlertDescription } from "../../../shared/ui/alert";
-
-export default function SignUp() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const router = useRouter();
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError("");
-
-        if (!email || !password) {
-            setError("Заполните все поля!");
-            return;
-        }
-
-        try {
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-            console.log("Sign up successful", {email, password});
-            router.push("/dashboard");
-        } catch (err) {
-            setError("An error occured during sign-up. Please try again");
-        }
-    }
-
+export function AuthFormLayout({}: {
+    title: string;
+    description: string;
+    inputs: React.ReactNode;
+    actions: React.ReactNode;
+    link: React.ReactNode;
+}) {
     return (
         <Card className="w-full max-w-md">
             <CardHeader>
