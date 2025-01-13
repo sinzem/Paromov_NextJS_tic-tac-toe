@@ -1,9 +1,9 @@
 import { Button } from "../../../shared/ui/button";
 import React from "react";
 
-export function SubmitButton({children}: {children: React.ReactNode}) {
+export function SubmitButton({children, isPending}: {children: React.ReactNode, isPending?: boolean}) {
     return (
-        <Button type="submit" className="full">
+        <Button disabled={isPending} type="submit" className="full">
             {children}
         </Button>
     )

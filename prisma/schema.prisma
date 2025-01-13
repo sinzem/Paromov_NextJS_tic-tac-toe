@@ -35,6 +35,7 @@ model User {
   login        String
   rating       Int
   passwordHash String
+  salt         String    @default("")
   games        Game[]    @relation("games") /* (получится связь "many-to-many", в призме промежуточная таблица создается автоматически, уточняем через relation, так как ниже есть схожий массив) */
   winnerGames  Game[]  /* (массив игр, в которых победил) */
 }
