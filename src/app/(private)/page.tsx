@@ -3,7 +3,7 @@
 // import { Card, CardTitle } from "../shared/ui/card";
 // import Image from "next/image";
 
-import { GamesList } from "../features/games-list/server";
+import { GamesList } from "../../features/games-list/server";
 
 export default async function Home() {
   // const games = await prisma.game.findMany(); /* (пример взаимодействия с БД) */
