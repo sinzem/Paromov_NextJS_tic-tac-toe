@@ -8,6 +8,6 @@ export default async function Page({
     const {id} = await params;
 
     return <main className="flex flex-col grow pt-24 w-full max-w-[400px] mx-auto">
-        <Game />
+        <Game gameId={id} />
     </main>
 }
