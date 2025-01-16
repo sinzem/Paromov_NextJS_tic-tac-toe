@@ -1,4 +1,4 @@
-import { GameEntity } from "@/entities/game";
+
 
 export function GamePlayers({game}: {game: GameEntity}) {
 
